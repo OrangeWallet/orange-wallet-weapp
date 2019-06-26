@@ -1,0 +1,14 @@
+<view id="view_content">
+    <swiper id="swiper_content" indicator-color="#fff" indicator-dots="{{true}}" indicator-active-color="#E57373">
+        <block wx:for="{{swiper_items}}" wx:key="*this">
+            <swiper-item id="guide_item_view">
+                <text id="title_text" class="white_text">Orange Wallet</text>
+                <image id="icon" src="{{item.icon}}"></image>
+                <text id="tip_title_text" class="white_text">{{item.title}}</text>
+                <text class="white_text" id="tip_content_text">{{item.text}}</text>
+            </swiper-item>
+        </block>
+    </swiper>
+    <button id="start_now_button" class="primary_text" bindtap="createWallet">立即体验</button>
+    <text id="import_button" class="white_text" bindtap="importWallet">导入钱包</text>
+</view>
