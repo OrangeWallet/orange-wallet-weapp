@@ -1,7 +1,8 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/guide/guide"
+    "pages/guide/guide",
+    "pages/input_password/input_password"
   ],
   "window": {
     "backgroundTextStyle": "light",

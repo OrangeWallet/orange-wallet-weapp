@@ -1,0 +1,44 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-content: flex-start;
+}
+
+.title_text_normal {
+  font-size: 35rpx;
+  color: grey;
+}
+
+.title_text_focused {
+  font-size: 35rpx;
+  color: #2196f3;
+}
+
+.input_normal {
+  border-bottom: 1rpx solid grey;
+}
+
+.input_focused {
+  border-bottom: 1rpx solid #2196f3;
+}
+
+.under_content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+}
+
+.error_text {
+  color: red;
+  font-size: 25rpx;
+  margin-top: 10rpx;
+}
+
+.indic_max_lenght {
+  color: grey;
+  font-size: 25rpx;
+  margin-top: 10rpx;
+  text-align: end;
+}

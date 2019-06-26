@@ -21,6 +21,10 @@ Page({
       }
     ]
   },
-  createWallet: () => {},
+  createWallet: () => {
+    wx.navigateTo({
+      url: "../input_password/input_password"
+    });
+  },
   importWallet: () => {}
 });
