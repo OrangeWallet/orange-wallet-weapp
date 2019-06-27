@@ -4,3 +4,27 @@
   justify-content: flex-start;
   align-content: center;
 }
+
+button {
+  margin-left: 25vw;
+  margin-right: 25vw;
+  margin-top: 1vh;
+  font-size: 33rpx;
+  color: white;
+  height: 75rpx;
+  line-height: 75rpx;
+  margin-top: 5vh;
+  vertical-align: center;
+}
+
+.checkbox_label {
+  font-size: 30rpx;
+}
+
+.check_custom {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-top: 50rpx;
+  margin-right: 80rpx;
+}

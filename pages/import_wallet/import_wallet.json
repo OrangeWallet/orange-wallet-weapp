@@ -1,7 +1,10 @@
 {
   "usingComponents": {
     "van-tabbar": "/component/vant-weapp/tabbar/index",
-    "van-tabbar-item": "/component/vant-weapp/tabbar-item/index"
+    "van-tabbar-item": "/component/vant-weapp/tabbar-item/index",
+    "van-cell-group": "/component/vant-weapp/cell-group/index",
+    "van-field": "/component/vant-weapp/field/index",
+    "van-checkbox": "/component/vant-weapp/checkbox/index"
   },
   "navigationBarTitleText": "导入钱包"
 }

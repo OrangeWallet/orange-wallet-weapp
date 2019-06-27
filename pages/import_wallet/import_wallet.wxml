@@ -1,12 +1,13 @@
-<view>
-    <view id="content">
-        <block wx:if="{{tabActive==0}}">
-            <text>123</text>
-        </block>
-        <block wx:else>
-            <text>456</text>
-        </block>
-    </view>
+<view class="content">
+    <van-cell-group>
+        <van-field value="{{ key }}" clearable label="{{tabActive==0?'私钥':'公钥'}}" icon="scan" type="textarea" autosize placeholder="{{tabActive==0?'请输入私钥':'请输入公钥'}}" bind:click-icon="onScanKey" />
+        <van-field value="{{ password }}" clearable type="password" label="密码" placeholder="密码最少八位" maxlength="{{12}}" />
+        <van-field value="{{ repassword }}" clearable type="password" label="重复密码" placeholder="请再次输入密码" maxlength="{{12}}" />
+    </van-cell-group>
+    <van-checkbox value="{{ observerChecked }}" disabled="{{observerDisable}}" label-class="checkbox_label" custom-class="check_custom" checked-color="#2196f3" bind:change="onObserverChanged">
+        观察钱包
+    </van-checkbox>
+    <button class="primary_background" bindtap="importWallet">导入</button>
     <van-tabbar active="{{ tabActive }}" bind:change="onTabChange" active-color="#2196f3">
         <van-tabbar-item icon="gold-coin-o">私钥</van-tabbar-item>
         <van-tabbar-item icon="user-circle-o">公钥</van-tabbar-item>
