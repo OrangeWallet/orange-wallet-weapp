@@ -12,7 +12,7 @@ const getEcPair = () => {
 
 const cryptPassword = password => {
   const blake2b = require("blake2b");
-  const Buffer = require("buffer/").Buffer;
+  const Buffer = require("buffer").Buffer;
 
   var output = new Uint8Array(32);
   var input = Buffer.from(password);

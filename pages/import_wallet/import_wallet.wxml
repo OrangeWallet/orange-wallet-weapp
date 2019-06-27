@@ -1,9 +1,7 @@
 <view class="content">
-    <van-cell-group>
-        <van-field value="{{ key }}" clearable label="{{tabActive==0?'私钥':'公钥'}}" icon="scan" type="textarea" autosize placeholder="{{tabActive==0?'请输入私钥':'请输入公钥'}}" bind:click-icon="onScanKey" />
-        <van-field value="{{ password }}" clearable type="password" label="密码" placeholder="密码最少八位" maxlength="{{12}}" />
-        <van-field value="{{ repassword }}" clearable type="password" label="重复密码" placeholder="请再次输入密码" maxlength="{{12}}" />
-    </van-cell-group>
+    <van-field error-message="{{keyErrorMessage}}" show-confirm-bar="{{false}}" clearable label="{{tabActive==0?'私钥':'公钥'}}" icon="scan" type="textarea" placeholder="{{tabActive==0?'请输入私钥':'请输入公钥'}}" bind:click-icon="onScanKey" bind:input="onKeyBlur" />
+    <van-field clearable type="password" label="密码" placeholder="密码最少八位" maxlength="{{12}}" bind:input="onPasswordBlur" />
+    <van-field clearable type="password" label="重复密码" placeholder="请再次输入密码" maxlength="{{12}}" bind:input="onRePasswordBlur" />
     <van-checkbox value="{{ observerChecked }}" disabled="{{observerDisable}}" label-class="checkbox_label" custom-class="check_custom" checked-color="#2196f3" bind:change="onObserverChanged">
         观察钱包
     </van-checkbox>
