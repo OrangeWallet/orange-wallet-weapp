@@ -6,12 +6,12 @@ Page({
     swiper_items: [
       {
         title: "安全",
-        text: "绝不保存私钥，仅提供查询功能",
+        text: "私钥加密保存在本地，支持导入公钥，观察者钱包",
         icon: Sercurity
       },
       {
         title: "隐私",
-        text: "不会收集用户隐私信息，现在不会，将来也不会",
+        text: "绝不收集用户隐私信息，现在不会，将来也不会",
         icon: Privacy
       },
       {
