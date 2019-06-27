@@ -2,7 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/guide/guide",
-    "pages/create_wallet/create_wallet"
+    "pages/create_wallet/create_wallet",
+    "pages/home/home"
   ],
   "window": {
     "backgroundTextStyle": "light",

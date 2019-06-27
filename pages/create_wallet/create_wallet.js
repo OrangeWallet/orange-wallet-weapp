@@ -2,8 +2,7 @@
 Page({
   data: {
     password: "",
-    rePassword: "",
-    loading: false
+    rePassword: ""
   },
   sendValue: function(e) {
     const value = e.detail.value;
@@ -17,7 +16,9 @@ Page({
       passwordInput.setError("");
       repasswordInput.setError("");
     }
-    this.setData({ password: value });
+    this.setData({
+      password: value
+    });
   },
   sendReValue: function(e) {
     const value = e.detail.value;
@@ -27,7 +28,9 @@ Page({
     } else {
       repasswordInput.setError("");
     }
-    this.setData({ rePassword: value });
+    this.setData({
+      rePassword: value
+    });
   },
   create: function() {
     if (this.data.password >= 8 && this.data.password == this.data.rePassword) {
@@ -35,11 +38,29 @@ Page({
       passwordInput.setDisable(true);
       const repasswordInput = this.selectComponent("#repasswordInput");
       repasswordInput.setDisable(true);
-      this.setData({ loading: true });
+      wx.showLoading({
+        title: "生成中"
+      });
 
       const crypto = require("../../utils/crypto");
       const ecPair = crypto.getEcPair();
-      console.log(ecPair.privateKey);
+      const data = crypto.encryptWallet(ecPair, "12345678");
+      wx.setStorage({
+        key: "wallet",
+        data,
+        success: () => {
+          wx.reLaunch({
+            url: "../home/home"
+          });
+        },
+        fail: () => {
+          wx.hideLoading();
+          wx.showModal({
+            title: "提示",
+            content: "创建失败，请重试"
+          });
+        }
+      });
     }
   }
 });
