@@ -26,5 +26,9 @@ Page({
       url: "../create_wallet/create_wallet"
     });
   },
-  importWallet: () => {}
+  importWallet: () => {
+    wx.navigateTo({
+      url: "../import_wallet/import_wallet"
+    });
+  }
 });

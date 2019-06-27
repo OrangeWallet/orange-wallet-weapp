@@ -1,0 +1,14 @@
+<view>
+    <view id="content">
+        <block wx:if="{{tabActive==0}}">
+            <text>123</text>
+        </block>
+        <block wx:else>
+            <text>456</text>
+        </block>
+    </view>
+    <van-tabbar active="{{ tabActive }}" bind:change="onTabChange" active-color="#2196f3">
+        <van-tabbar-item icon="gold-coin-o">私钥</van-tabbar-item>
+        <van-tabbar-item icon="user-circle-o">公钥</van-tabbar-item>
+    </van-tabbar>
+</view>

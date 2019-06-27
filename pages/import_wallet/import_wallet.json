@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "van-tabbar": "/component/vant-weapp/tabbar/index",
+    "van-tabbar-item": "/component/vant-weapp/tabbar-item/index"
+  },
+  "navigationBarTitleText": "导入钱包"
+}
