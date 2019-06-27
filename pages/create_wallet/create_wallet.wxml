@@ -1,0 +1,5 @@
+<view id="content">
+    <myInput id="passwordInput" password="{{true}}" title="请输入密码" inputType="digit" maxLength="{{12}}" bind:sendValue="sendValue" />
+    <myInput id="repasswordInput" password="{{true}}" title="请重复密码" inputType="digit" maxLength="{{12}}" bind:sendValue="sendReValue" />
+    <button class="primary_background" loading="{{loading}}" bindtap="create">创建</button>
+</view>

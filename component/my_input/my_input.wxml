@@ -1,6 +1,6 @@
 <view class="content" bind:sendValue="sendValue">
     <text class="{{focus?'title_text_focused':'title_text_normal'}}">{{title}}</text>
-    <input class="{{focus?'input_focused':'input_normal'}}" type="{{inputType}}" maxlength="{{maxLength}}" password="{{password}}" bindinput="bindinput" bindfocus="bindfocus" bindblur="bindblur" />
+    <input class="{{focus?'input_focused':'input_normal'}}" type="{{inputType}}" disabled="{{disabled}}" maxlength="{{maxLength}}" password="{{password}}" bindinput="bindinput" bindfocus="bindfocus" bindblur="bindblur" />
     <view class="under_content">
         <text class="error_text">{{error}}</text>
         <text class="indic_max_lenght">{{valueLength}}</text>

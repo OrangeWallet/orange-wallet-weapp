@@ -12,6 +12,10 @@ Component({
     inputType: {
       type: String,
       value: "text"
+    },
+    disabled: {
+      type: Boolean,
+      value: false
     }
   },
 
@@ -20,7 +24,8 @@ Component({
     error: "",
     focus: false,
     valueLength: "0",
-    maxLength: -1
+    maxLength: -1,
+    disabled: false
   },
   attached: function() {
     let valueLength = "";
@@ -30,7 +35,8 @@ Component({
       valueLength = "0";
     }
     this.setData({
-      valueLength
+      valueLength,
+      disabled: this.data.disabled
     });
   },
   methods: {
@@ -52,10 +58,13 @@ Component({
       this.triggerEvent("sendValue", { value: this.data.value });
     },
     bindfocus: function() {
-      this.setData({ focus: true });
+      this.setData({ focus: true, error: "" });
     },
     setError: function(error) {
       this.setData({ error });
+    },
+    setDisable: function(disabled) {
+      this.setData({ disabled });
     }
   }
 });

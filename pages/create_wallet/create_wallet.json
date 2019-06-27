@@ -2,5 +2,5 @@
   "usingComponents": {
     "myInput": "/component/my_input/my_input"
   },
-  "navigationBarTitleText": "密码"
+  "navigationBarTitleText": "创建钱包"
 }

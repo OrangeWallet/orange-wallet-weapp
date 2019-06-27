@@ -23,7 +23,7 @@ Page({
   },
   createWallet: () => {
     wx.navigateTo({
-      url: "../input_password/input_password"
+      url: "../create_wallet/create_wallet"
     });
   },
   importWallet: () => {}
