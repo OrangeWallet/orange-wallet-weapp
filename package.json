@@ -1,0 +1,11 @@
+{
+  "name": "orange-wallet-weapp",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Bao Jun <baojun.cz@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "elliptic": "^6.5.0",
+    "miniprogram-sm-crypto": "^0.0.6"
+  }
+}
