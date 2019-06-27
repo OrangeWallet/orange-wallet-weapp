@@ -30,14 +30,16 @@ Page({
     this.setData({ rePassword: value });
   },
   create: function() {
-    console.log(this.data.password);
-    console.log(this.data.rePassword);
     if (this.data.password >= 8 && this.data.password == this.data.rePassword) {
       const passwordInput = this.selectComponent("#passwordInput");
       passwordInput.setDisable(true);
       const repasswordInput = this.selectComponent("#repasswordInput");
       repasswordInput.setDisable(true);
       this.setData({ loading: true });
+
+      const crypto = require("../../utils/crypto");
+      const ecPair = crypto.getEcPair();
+      console.log(ecPair.privateKey);
     }
   }
 });
