@@ -32,13 +32,10 @@ Page({
     });
   },
   create: function() {
-    console.log("click");
     if (
       this.data.password.length >= 8 &&
       this.data.password === this.data.rePassword
     ) {
-      console.log(this.data.password);
-      console.log(this.data.rePassword);
       const passwordInput = this.selectComponent("#passwordInput");
       passwordInput.setDisable(true);
       const repasswordInput = this.selectComponent("#repasswordInput");
@@ -48,23 +45,30 @@ Page({
       });
 
       const WalletUtils = require("../../utils/wallet_utils");
-      WalletUtils.write({
-        ecPair: WalletUtils.generateEcPair(),
-        password: this.data.password,
-        success: () => {
-          console.log("123");
-          wx.reLaunch({
-            url: "../home/home"
+      const WalletStore = require("../../utils/wallet_utils");
+
+      const fail = () => {
+        wx.hideLoading();
+        wx.showModal({
+          title: "提示",
+          content: "创建失败，请重试"
+        });
+      };
+      WalletStore.generateEcPair()
+        .then(ecPair => {
+          WalletUtils.write({
+            ecPair,
+            password: this.data.password,
+            success: () => {
+              console.log("123");
+              wx.reLaunch({
+                url: "../home/home"
+              });
+            },
+            fail
           });
-        },
-        fail: () => {
-          wx.hideLoading();
-          wx.showModal({
-            title: "提示",
-            content: "创建失败，请重试"
-          });
-        }
-      });
+        })
+        .catch(fail);
     }
   }
 });

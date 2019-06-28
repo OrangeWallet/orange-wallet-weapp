@@ -71,7 +71,7 @@ Page({
         }
       } else {
         //publicKey model
-        exPair = { privateKey: "", publicKey: this.data.key };
+        ecPair = { privateKey: "", publicKey: this.data.key };
       }
       WalletUtils.write({
         ecPair,
