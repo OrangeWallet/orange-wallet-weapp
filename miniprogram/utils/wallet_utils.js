@@ -85,28 +85,41 @@ const write = callBacks => {
   });
 };
 
-const read = callBacks => {
-  try {
-    wx.getStorage({
-      key: WalletStoreKey,
-      success(res) {
-        try {
-          const wallet = decryptWallet(res.data, callBacks.password);
-          callBacks.success(wallet);
-        } catch (e) {
-          callBacks.fail("密码错误");
-        }
+const readPublicKey = callBacks => {
+  wx.getStorage({
+    key: WalletStoreKey,
+    success(res) {
+      try {
+        callBacks.success(JSON.parse(res.data).publicKey);
+      } catch (error) {
+        callBacks.fail("读取失败");
       }
-    });
-  } catch (e) {
-    console.log(e);
-    callBacks.fail("读取失败，请刷新重试");
-  }
+    },
+    fail: callBacks.fail
+  });
+};
+
+const read = callBacks => {
+  wx.getStorage({
+    key: WalletStoreKey,
+    success(res) {
+      try {
+        const wallet = decryptWallet(res.data, callBacks.password);
+        callBacks.success(wallet);
+      } catch (e) {
+        callBacks.fail("密码错误");
+      }
+    },
+    fail: () => {
+      callBacks.fail("读取失败，请刷新重试");
+    }
+  });
 };
 
 module.exports = {
   write,
   read,
   generateEcPair,
-  ecPairFromPriavteKey
+  ecPairFromPriavteKey,
+  readPublicKey
 };

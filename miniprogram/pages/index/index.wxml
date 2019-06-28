@@ -1,4 +1,4 @@
 <!-- index.wxml -->
 <view class="container">
-  <button bindtap="guide">click</button>
+  <icon type="success" size="23" color="" />
 </view>
