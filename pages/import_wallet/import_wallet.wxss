@@ -3,6 +3,8 @@
   flex-direction: column;
   justify-content: flex-start;
   align-content: center;
+  height: 100vh;
+  background-color: #eeeeee;
 }
 
 button {
@@ -15,6 +17,9 @@ button {
   line-height: 75rpx;
   margin-top: 5vh;
   vertical-align: center;
+}
+
+van-cell-group {
 }
 
 .checkbox_label {

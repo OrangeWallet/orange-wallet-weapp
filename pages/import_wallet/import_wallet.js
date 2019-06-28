@@ -15,7 +15,7 @@ Page({
   onTabChange: function(event) {
     let observerChecked = this.data.observerChecked;
     let observerDisable = this.data.observerDisable;
-    if (event.detail == 1) {
+    if (event.detail.index == 1) {
       observerChecked = true;
       observerDisable = true;
     } else {
@@ -23,25 +23,26 @@ Page({
       observerDisable = false;
     }
     this.setData({
-      tabActive: event.detail,
+      tabActive: event.detail.index,
       key: "",
       observerChecked,
       observerDisable
     });
   },
   onKeyBlur: function(event) {
-    if (this.data.key != event.detail) this.setData({ key: event.detail });
+    this.setData({ key: event.detail });
   },
   onPasswordBlur: function(event) {
-    if (this.data.password != event.detail)
-      this.setData({ password: event.detail });
+    this.setData({ password: event.detail });
   },
   onRePasswordBlur: function(event) {
-    if (this.data.repassword != event.detail)
-      this.setData({ repassword: event.detail });
+    this.setData({ repassword: event.detail });
   },
   onObserverChanged: function(event) {
     this.setData({ observerChecked: event.detail });
+  },
+  onClearKey: function() {
+    this.setData({ key: "" });
   },
   importWallet: function() {
     this.setData({
