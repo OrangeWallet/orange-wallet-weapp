@@ -55,21 +55,27 @@ const cryptPassword = password => {
 
 const encryptWallet = (ecPair, password) => {
   const blake2b = cryptPassword(password);
-  return CryptoJS.AES.encrypt(
-    JSON.stringify(ecPair),
-    blake2b.toString()
-  ).toString();
+  if (ecPair.privateKey != "") {
+    ecPair.privateKey = CryptoJS.AES.encrypt(
+      ecPair.privateKey,
+      blake2b.toString()
+    ).toString();
+  }
+  return JSON.stringify(ecPair);
 };
 
 const decryptWallet = (data, password) => {
+  const ecPair = JSON.parse(data);
   const blake2b = cryptPassword(password);
-  const bytes = CryptoJS.AES.decrypt(data, blake2b.toString());
-  return bytes.toString(CryptoJS.enc.Utf8);
+  if (ecPair.privateKey != "") {
+    const bytes = CryptoJS.AES.decrypt(ecPair.privateKey, blake2b.toString());
+    ecPair.privateKey = bytes.toString(CryptoJS.enc.Utf8);
+  }
+  return ecPair;
 };
 
 const write = callBacks => {
   const data = encryptWallet(callBacks.ecPair, callBacks.password);
-  console.log(data);
   wx.setStorage({
     key: WalletStoreKey,
     data,
