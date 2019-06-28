@@ -1,5 +1,8 @@
 <view id="content">
-    <myInput id="passwordInput" password="{{true}}" title="请输入密码" inputType="text" maxLength="{{12}}" bind:sendValue="sendValue" />
-    <myInput id="repasswordInput" password="{{true}}" title="请重复密码" inputType="text" maxLength="{{12}}" bind:sendValue="sendReValue" />
-    <button class="primary_background" bindtap="create">创建</button>
+    <van-cell-group>
+        <van-field error-message="{{passwordErrorMessage}}" clearable type="password" label="密码" placeholder="密码最少八位" maxlength="{{16}}" bind:input="onPasswordBlur" />
+        <van-field error-message="{{repasswordErrorMessage}}" clearable type="password" label="重复密码" placeholder="请再次输入密码" maxlength="{{16}}" bind:input="onRePasswordBlur" />
+        <van-switch-cell title=" 观察钱包" checked="{{ observerChecked }}" disabled="{{observerDisable}}" bind:change="onObserverChanged" active-color="#2196f3" />
+    </van-cell-group>
+    <button class="primary_background" bindtap="createWallet">创建</button>
 </view>

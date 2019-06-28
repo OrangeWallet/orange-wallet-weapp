@@ -19,9 +19,6 @@ button {
   vertical-align: center;
 }
 
-van-cell-group {
-}
-
 .checkbox_label {
   font-size: 30rpx;
 }

@@ -47,9 +47,6 @@ Page({
   onObserverChanged: function(event) {
     this.setData({ observerChecked: event.detail });
   },
-  onClearKey: function() {
-    this.setData({ key: "" });
-  },
   importWallet: function() {
     this.setData({
       keyErrorMessage: "",

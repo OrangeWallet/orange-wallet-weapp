@@ -1,6 +1,8 @@
 {
   "usingComponents": {
-    "myInput": "/component/my_input/my_input"
+    "van-cell-group": "/component/vant-weapp/cell-group/index",
+    "van-field": "/component/vant-weapp/field/index",
+    "van-switch-cell": "/component/vant-weapp/switch-cell/index"
   },
   "navigationBarTitleText": "创建钱包"
 }

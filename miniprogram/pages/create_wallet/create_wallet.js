@@ -1,52 +1,31 @@
 Page({
   data: {
     password: "",
-    rePassword: ""
+    passwordErrorMessage: "",
+    repassword: "",
+    repasswordErrorMessage: "",
+    observerChecked: false,
+    observerDisable: false
   },
-  sendValue: function(e) {
-    const value = e.detail.value;
-    const passwordInput = this.selectComponent("#passwordInput");
-    const repasswordInput = this.selectComponent("#repasswordInput");
-    if (value.length < 8) {
-      passwordInput.setError("密码最少八位");
-    } else if (this.data.password != this.data.rePassword) {
-      repasswordInput.setError("密码不一致");
-    } else {
-      passwordInput.setError("");
-      repasswordInput.setError("");
-    }
+  onPasswordBlur: function(event) {
+    this.setData({ password: event.detail });
+  },
+  onRePasswordBlur: function(event) {
+    this.setData({ repassword: event.detail });
+  },
+  onObserverChanged: function(event) {
+    this.setData({ observerChecked: event.detail });
+  },
+  createWallet: function() {
     this.setData({
-      password: value
+      passwordErrorMessage: "",
+      repasswordErrorMessage: ""
     });
-  },
-  sendReValue: function(e) {
-    const value = e.detail.value;
-    const repasswordInput = this.selectComponent("#repasswordInput");
-    if (value != this.data.password) {
-      repasswordInput.setError("密码不一致");
-    } else {
-      repasswordInput.setError("");
-    }
-    this.setData({
-      rePassword: value
-    });
-  },
-  create: function() {
-    if (
-      this.data.password.length >= 8 &&
-      this.data.password === this.data.rePassword
-    ) {
-      const passwordInput = this.selectComponent("#passwordInput");
-      passwordInput.setDisable(true);
-      const repasswordInput = this.selectComponent("#repasswordInput");
-      repasswordInput.setDisable(true);
+    if (this._validPassword()) {
       wx.showLoading({
         title: "生成中"
       });
-
       const WalletUtils = require("../../utils/wallet_utils");
-      const WalletStore = require("../../utils/wallet_utils");
-
       const fail = () => {
         wx.hideLoading();
         wx.showModal({
@@ -54,8 +33,11 @@ Page({
           content: "创建失败，请重试"
         });
       };
-      WalletStore.generateEcPair()
+      WalletUtils.generateEcPair()
         .then(ecPair => {
+          if (this.data.observerChecked) {
+            ecPair.privateKey = "";
+          }
           WalletUtils.write({
             ecPair,
             password: this.data.password,
@@ -70,5 +52,15 @@ Page({
         })
         .catch(fail);
     }
+  },
+  _validPassword: function() {
+    if (this.data.password.length < 8) {
+      this.setData({ passwordErrorMessage: "密码最少八位" });
+      return false;
+    } else if (this.data.password != this.data.repassword) {
+      this.setData({ repasswordErrorMessage: "密码不一致" });
+      return false;
+    }
+    return true;
   }
 });

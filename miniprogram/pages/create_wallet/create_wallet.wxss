@@ -1,18 +1,10 @@
 #content {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-content: center;
-  margin-top: 17vh;
-}
-
-myInput {
-  margin-left: 20vw;
-  margin-right: 20vw;
-}
-
-#repasswordInput {
-  margin-top: 2vh;
+  height: 100vh;
+  background-color: #eeeeee;
 }
 
 button {
