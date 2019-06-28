@@ -15,6 +15,8 @@
 	"libVersion": "2.7.2",
 	"appid": "wx3e2234d1c2be0808",
 	"projectname": "orange-wallet-weapp",
+	"cloudfunctionRoot": "cloudfunctions/",
+  "miniprogramRoot":"miniprogram",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
