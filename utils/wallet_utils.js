@@ -1,3 +1,5 @@
+const WalletStoreKey = "Wallet";
+
 const prvKeyTopubKey = privateKey => {
   const EC = require("elliptic").ec;
   const ec = new EC("secp256k1");
@@ -45,9 +47,40 @@ const decryptWallet = (data, password) => {
   return bytes.toString(CryptoJS.enc.Utf8);
 };
 
+const write = callBacks => {
+  const data = encryptWallet(callBacks.ecPair, callBacks.password);
+  console.log(data);
+  wx.setStorage({
+    key: WalletStoreKey,
+    data,
+    success: callBacks.success,
+    fail: callBacks.fail,
+    complete: callBacks.complete
+  });
+};
+
+const read = callBacks => {
+  try {
+    wx.getStorage({
+      key: WalletStoreKey,
+      success(res) {
+        try {
+          const wallet = decryptWallet(res.data, callBacks.password);
+          callBacks.success(wallet);
+        } catch (e) {
+          callBacks.fail("密码错误");
+        }
+      }
+    });
+  } catch (e) {
+    console.log(e);
+    callBacks.fail("读取失败，请刷新重试");
+  }
+};
+
 module.exports = {
+  write,
+  read,
   generateEcPair,
-  encryptWallet,
-  decryptWallet,
   ecPairFromPriavteKey
 };

@@ -4,8 +4,8 @@
         <van-tab title="公钥" />
     </van-tabs>
     <van-cell-group>
-        <van-field error-message="{{keyErrorMessage}}" show-confirm-bar="{{false}}" autosize label="{{tabActive==0?'私钥':'公钥'}}" icon="scan" type="textarea" placeholder="{{tabActive==0?'请输入私钥':'请输入公钥'}}" bind:click-icon="onScanKey" bind:input="onKeyBlur" bind:clear="onClearKey" />
-        <van-field clearable type="password" label="密码" placeholder="密码最少十二位" maxlength="{{16}}" bind:input="onPasswordBlur" />
+        <van-field error-message="{{keyErrorMessage}}" show-confirm-bar="{{false}}" autosize label="{{modelTitle}}" icon="scan" type="textarea" placeholder="{{'请输入'+modelTitle}}" bind:click-icon="onScanKey" bind:input="onKeyBlur" bind:clear="onClearKey" />
+        <van-field clearable type="password" label="密码" placeholder="密码最少八位" maxlength="{{16}}" bind:input="onPasswordBlur" />
         <van-field clearable type="password" label="重复密码" placeholder="请再次输入密码" maxlength="{{16}}" bind:input="onRePasswordBlur" />
         <van-switch-cell title=" 观察钱包" checked="{{ observerChecked }}" disabled="{{observerDisable}}" bind:change="onObserverChanged" active-color="#2196f3" />
     </van-cell-group>

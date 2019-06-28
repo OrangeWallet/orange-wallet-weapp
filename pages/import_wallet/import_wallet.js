@@ -1,10 +1,12 @@
-import { validPrvKey } from "../../utils/valid";
+import { validimportKey } from "../../utils/valid";
+import * as WalletUtils from "../../utils/wallet_utils";
 
 Page({
   data: {
     tabActive: 0,
     observerChecked: false,
     observerDisable: false,
+    modelTitle: "私钥",
     key: "",
     keyErrorMessage: "",
     password: "",
@@ -15,18 +17,22 @@ Page({
   onTabChange: function(event) {
     let observerChecked = this.data.observerChecked;
     let observerDisable = this.data.observerDisable;
+    let modelTitle = this.data.modelTitle;
     if (event.detail.index == 1) {
       observerChecked = true;
       observerDisable = true;
+      modelTitle = "公钥";
     } else {
       observerChecked = false;
       observerDisable = false;
+      modelTitle = "私钥";
     }
     this.setData({
       tabActive: event.detail.index,
       key: "",
       observerChecked,
-      observerDisable
+      observerDisable,
+      modelTitle
     });
   },
   onKeyBlur: function(event) {
@@ -50,16 +56,39 @@ Page({
       passwordErrorMessage: "",
       repasswordErrorMessage: ""
     });
-    if (this.data.tabActive == 0) {
-      //privateKey model
-      if (this.data.key == "") {
-        this.setData({ keyErrorMessage: "请输入私钥" });
-      } else if (!validPrvKey(this.data.key)) {
-        this.setData({ keyErrorMessage: "私钥格式错误" });
-      } else if (this._validPassword()) {
-        //valid finish
+    if (this.data.key == "") {
+      this.setData({ keyErrorMessage: this.data.modelTitle + "不能为空" });
+    } else if (!validimportKey(this.data.key)) {
+      this.setData({ keyErrorMessage: this.data.modelTitle + "格式错误" });
+    } else if (this._validPassword()) {
+      //valid finish
+      let ecPair;
+      if (this.data.tabActive == 0) {
+        //privateKey model
+        ecPair = WalletUtils.ecPairFromPriavteKey(this.data.key);
+        if (this.data.observerChecked) {
+          ecPair.privateKey = "";
+        }
+      } else {
+        //publicKey model
+        exPair = { privateKey: "", publicKey: this.data.key };
       }
-    } else {
+      WalletUtils.write({
+        ecPair,
+        password: this.data.password,
+        success: () => {
+          wx.reLaunch({
+            url: "../home/home"
+          });
+        },
+        fail: () => {
+          wx.hideLoading();
+          wx.showModal({
+            title: "提示",
+            content: "创建失败，请重试"
+          });
+        }
+      });
     }
   },
   _validPassword: function() {

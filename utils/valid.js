@@ -1,4 +1,6 @@
-const validPrvKey = prvKey => {
+const Buffer = require("buffer").Buffer;
+
+const validimportKey = prvKey => {
   prvKey = prvKey.replace("0x", "");
   const Buffer = require("buffer").Buffer;
   const buffer = Buffer.from(prvKey);
@@ -14,5 +16,5 @@ const validPrvKey = prvKey => {
 };
 
 module.exports = {
-  validPrvKey
+  validimportKey
 };

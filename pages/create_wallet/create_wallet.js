@@ -1,4 +1,3 @@
-// pages/input_password/input_password.js
 Page({
   data: {
     password: "",
@@ -33,7 +32,13 @@ Page({
     });
   },
   create: function() {
-    if (this.data.password >= 8 && this.data.password == this.data.rePassword) {
+    console.log("click");
+    if (
+      this.data.password.length >= 8 &&
+      this.data.password === this.data.rePassword
+    ) {
+      console.log(this.data.password);
+      console.log(this.data.rePassword);
       const passwordInput = this.selectComponent("#passwordInput");
       passwordInput.setDisable(true);
       const repasswordInput = this.selectComponent("#repasswordInput");
@@ -42,13 +47,12 @@ Page({
         title: "生成中"
       });
 
-      const crypto = require("../../utils/crypto");
-      const ecPair = crypto.getEcPair();
-      const data = crypto.encryptWallet(ecPair, "12345678");
-      wx.setStorage({
-        key: "wallet",
-        data,
+      const WalletUtils = require("../../utils/wallet_utils");
+      WalletUtils.write({
+        ecPair: WalletUtils.generateEcPair(),
+        password: this.data.password,
         success: () => {
+          console.log("123");
           wx.reLaunch({
             url: "../home/home"
           });
