@@ -16,13 +16,14 @@
 	"appid": "wx3e2234d1c2be0808",
 	"projectname": "orange-wallet-weapp",
 	"cloudfunctionRoot": "cloudfunctions/",
-  "miniprogramRoot":"miniprogram",
+	"miniprogramRoot": "miniprogram/",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
 	"isGameTourist": false,
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
+	"cloudfunctionTemplateRoot": "cloudfunctionTemplate",
 	"condition": {
 		"search": {
 			"current": -1,
