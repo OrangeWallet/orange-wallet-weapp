@@ -3,14 +3,16 @@ Page({
     const WalletUtils = require("../../utils/wallet_utils");
     WalletUtils.readPublicKey({
       success: () => {
-        setTimeout(() => {
+        const timeout = setTimeout(() => {
+          clearTimeout(timeout);
           wx.redirectTo({
             url: "../home/home"
           });
         }, 1000);
       },
       fail: () => {
-        setTimeout(() => {
+        const timeout = setTimeout(() => {
+          clearTimeout(timeout);
           wx.redirectTo({
             url: "../guide/guide"
           });
