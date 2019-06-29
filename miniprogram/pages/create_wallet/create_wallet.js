@@ -38,13 +38,13 @@ Page({
           if (this.data.observerChecked) {
             ecPair.privateKey = "";
           }
-          WalletUtils.write({
+          WalletUtils.writeWallet({
             ecPair,
             password: this.data.password,
             success: () => {
               console.log("123");
               wx.reLaunch({
-                url: "../home/home"
+                url: "../home/home?publicKey=" + ecPair.publicKey
               });
             },
             fail

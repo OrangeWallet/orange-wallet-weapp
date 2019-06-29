@@ -74,7 +74,7 @@ const decryptWallet = (data, password) => {
   return ecPair;
 };
 
-const write = callBacks => {
+const writeWallet = callBacks => {
   const data = encryptWallet(callBacks.ecPair, callBacks.password);
   wx.setStorage({
     key: WalletStoreKey,
@@ -99,7 +99,7 @@ const readPublicKey = callBacks => {
   });
 };
 
-const read = callBacks => {
+const readWallet = callBacks => {
   wx.getStorage({
     key: WalletStoreKey,
     success(res) {
@@ -116,10 +116,26 @@ const read = callBacks => {
   });
 };
 
+const isObserverModel = callBacks => {
+  wx.getStorage({
+    key: WalletStoreKey,
+    success(res) {
+      const ecPair = JSON.parse(res.data);
+      if (ecPair.privateKey == "") {
+        callBacks.success(true);
+      } else {
+        callBacks.success(false);
+      }
+    },
+    fail: callBacks.fail
+  });
+};
+
 module.exports = {
-  write,
-  read,
+  writeWallet,
+  readWallet,
   generateEcPair,
   ecPairFromPriavteKey,
-  readPublicKey
+  readPublicKey,
+  isObserverModel
 };

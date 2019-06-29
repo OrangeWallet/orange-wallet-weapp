@@ -70,12 +70,12 @@ Page({
         //publicKey model
         ecPair = { privateKey: "", publicKey: this.data.key };
       }
-      WalletUtils.write({
+      WalletUtils.writeWallet({
         ecPair,
         password: this.data.password,
         success: () => {
           wx.reLaunch({
-            url: "../home/home"
+            url: "../home/home?publicKey=" + ecPair.publicKey
           });
         },
         fail: () => {

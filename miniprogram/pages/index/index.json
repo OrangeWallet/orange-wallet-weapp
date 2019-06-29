@@ -1,3 +1,5 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "password-dialog": "/component/password_dialog/password_dialog"
+  }
 }

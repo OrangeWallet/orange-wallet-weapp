@@ -1,4 +1,4 @@
-<!-- index.wxml -->
-<view class="container">
+<view class="content">
+  <password-dialog showModal="{{showModel}}" passwordErrorMessage="{{passwordErrorMessage}}" bind:onCancel="onCancel" bind:onConfirm="onConfirm" />
   <icon type="success" size="23" color="" />
 </view>
