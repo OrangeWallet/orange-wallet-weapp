@@ -1,4 +1,4 @@
 <view class="content">
-  <password-dialog showModal="{{showModel}}" isPassword ErrorMessage="{{passwordErrorMessage}}" bind:onCancel="onCancel" bind:onVerifyCorrect="onVerifyCorrect" />
+  <!-- <password-dialog showModal="{{showModel}}" isPassword ErrorMessage="{{passwordErrorMessage}}" bind:onCancel="onCancel" bind:onVerifyCorrect="onVerifyCorrect" /> -->
   <icon type="success" size="23" color="" />
 </view>
