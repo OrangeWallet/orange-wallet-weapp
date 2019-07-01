@@ -18,6 +18,14 @@ Page({
   onObserverChanged: function(event) {
     this.setData({ observerChecked: event.detail });
   },
+  onSwitchQuestion: function() {
+    wx.showModal({
+      title: "观察钱包",
+      showCancel: false,
+      content:
+        "不导入私钥，仅导入公钥以供查看余额、交易等信息，无法签名、转账等操作"
+    });
+  },
   createWallet: function() {
     this.setData({
       passwordErrorMessage: "",

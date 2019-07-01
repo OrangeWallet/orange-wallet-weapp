@@ -4,8 +4,7 @@ Page({
   data: {
     publicKey: "",
     statusBarHeight: 0,
-    navHeight: 0,
-    settingIcon: "../../images/icon_more.png"
+    navHeight: 0
   },
 
   onReady: function() {

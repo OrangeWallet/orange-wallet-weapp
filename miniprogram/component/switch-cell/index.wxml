@@ -1,0 +1,7 @@
+<van-cell center border="{{ border }}" custom-class="van-switch-cell">
+  <view slot="title" id="title">
+    <text>{{title}}</text>
+    <image src="../../images/question.png" style="height: 35rpx;width:35rpx;margin-left:10rpx" bind:tap="onIconClick" />
+  </view>
+  <van-switch size="{{ size }}" checked="{{ checked }}" loading="{{ loading }}" disabled="{{ disabled }}" active-color="{{ activeColor }}" inactive-color="{{ inactiveColor }}" active-value="{{ activeValue }}" inactive-value="{{ inactiveValue }}" custom-class="van-switch-cell__switch" bind:change="onChange" />
+</van-cell>
