@@ -67,6 +67,7 @@ const encryptWallet = (ecPair, password) => {
 const decryptWallet = (data, password) => {
   const ecPair = JSON.parse(data);
   const blake2b = cryptPassword(password);
+  console.log(ecPair);
   if (ecPair.privateKey != "") {
     const bytes = CryptoJS.AES.decrypt(ecPair.privateKey, blake2b.toString());
     ecPair.privateKey = bytes.toString(CryptoJS.enc.Utf8);
@@ -105,7 +106,12 @@ const readWallet = callBacks => {
     success(res) {
       try {
         const wallet = decryptWallet(res.data, callBacks.password);
-        callBacks.success(wallet);
+        const valid = require("./valid");
+        if (valid.validimportKey(wallet.privateKey)) {
+          callBacks.success(wallet);
+        } else {
+          callBacks.fail("密码错误");
+        }
       } catch (e) {
         callBacks.fail("密码错误");
       }

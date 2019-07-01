@@ -1,10 +1,12 @@
+import { readWallet } from "../../utils/wallet_utils";
+
 Component({
   properties: {
     showModal: {
       type: Boolean,
       value: false
     },
-    password: {
+    isPassword: {
       type: String,
       value: ""
     },
@@ -18,7 +20,9 @@ Component({
     }
   },
   data: {
-    showModal: false
+    showModal: false,
+    passwordErrorMessage: "",
+    password: ""
   },
   methods: {
     preventTouchMove: function() {},
@@ -28,13 +32,36 @@ Component({
       }
     },
     bindinput: function(e) {
-      this.setData({ value: e.detail.value });
+      this.setData({ password: e.detail.value });
     },
     onCancel: function() {
       this.triggerEvent("onCancel");
     },
     onConfirm: function() {
-      this.triggerEvent("onConfirm", { value: this.data.value });
+      const componet = this;
+      const password = componet.data.password;
+      if (password.length < 8) {
+        componet.setData({
+          passwordErrorMessage: "密码最少八位"
+        });
+        return;
+      }
+      wx.showLoading({
+        title: "解锁中"
+      });
+      readWallet({
+        password,
+        success: function(wallet) {
+          console.log(wallet);
+          componet.triggerEvent("onVerifyCorrect", { wallet });
+        },
+        fail: function(error) {
+          wx.hideLoading();
+          componet.setData({
+            passwordErrorMessage: error
+          });
+        }
+      });
     }
   }
 });

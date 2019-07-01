@@ -1,4 +1,3 @@
-import { readWallet } from "../../utils/wallet_utils";
 const app = getApp();
 
 Page({
@@ -43,31 +42,12 @@ Page({
     showModel: false,
     passwordErrorMessage: ""
   },
-  onConfirm: function(e) {
-    const page = this;
-    let password = e.detail.value;
-    if (password.length < 8) {
-      page.setData({
-        passwordErrorMessage: "密码最少八位"
-      });
-      return;
-    }
-    wx.showLoading({
-      title: "解锁中"
-    });
-    readWallet({
-      password,
-      success: wallet => {
-        wx.redirectTo({
-          url: "../home/home?publicKey=" + wallet.publicKey
-        });
-      },
-      fail: function(error) {
-        wx.hideLoading();
-        page.setData({
-          passwordErrorMessage: error
-        });
-      }
+  onVerifyCorrect: function(event) {
+    const wallet = event.detail.wallet;
+    app.globalData.publicKey = wallet.publicKey;
+    app.globalData.isOberverModel = wallet.privateKey === "";
+    wx.redirectTo({
+      url: "../home/home"
     });
   },
   onCancel: function() {}

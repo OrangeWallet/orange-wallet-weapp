@@ -1,5 +1,6 @@
 import { validimportKey } from "../../utils/valid";
 import * as WalletUtils from "../../utils/wallet_utils";
+const app = getApp();
 
 Page({
   data: {
