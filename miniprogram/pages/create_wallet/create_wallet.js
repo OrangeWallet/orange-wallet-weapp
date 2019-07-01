@@ -1,3 +1,5 @@
+const app = getApp();
+
 Page({
   data: {
     password: "",
@@ -42,9 +44,10 @@ Page({
             ecPair,
             password: this.data.password,
             success: () => {
-              console.log("123");
+              app.globalData.publicKey = ecPair.publicKey;
+              app.globalData.isOberverModel = this.data.observerChecked;
               wx.reLaunch({
-                url: "../home/home?publicKey=" + ecPair.publicKey
+                url: "../home/home"
               });
             },
             fail

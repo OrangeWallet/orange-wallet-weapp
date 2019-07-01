@@ -1,4 +1,5 @@
 import { readWallet } from "../../utils/wallet_utils";
+const app = getApp();
 
 Page({
   onReady: function() {
@@ -8,9 +9,11 @@ Page({
       success: publicKey => {
         WalletUtils.isObserverModel({
           success: isObserver => {
+            app.globalData.publicKey = publicKey;
+            app.globalData.isOberverModel = isObserver;
             if (isObserver) {
               wx.redirectTo({
-                url: "../home/home?publicKey=" + publicKey
+                url: "../home/home"
               });
             } else {
               page.setData({

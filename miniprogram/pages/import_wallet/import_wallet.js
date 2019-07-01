@@ -74,8 +74,10 @@ Page({
         ecPair,
         password: this.data.password,
         success: () => {
+          app.globalData.publicKey = ecPair.publicKey;
+          app.globalData.isOberverModel = this.data.observerChecked;
           wx.reLaunch({
-            url: "../home/home?publicKey=" + ecPair.publicKey
+            url: "../home/home"
           });
         },
         fail: () => {
