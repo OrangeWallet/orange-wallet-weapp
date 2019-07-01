@@ -52,7 +52,6 @@ Component({
       readWallet({
         password,
         success: function(wallet) {
-          console.log(wallet);
           componet.triggerEvent("onVerifyCorrect", { wallet });
         },
         fail: function(error) {

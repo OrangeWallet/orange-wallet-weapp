@@ -67,7 +67,6 @@ const encryptWallet = (ecPair, password) => {
 const decryptWallet = (data, password) => {
   const ecPair = JSON.parse(data);
   const blake2b = cryptPassword(password);
-  console.log(ecPair);
   if (ecPair.privateKey != "") {
     const bytes = CryptoJS.AES.decrypt(ecPair.privateKey, blake2b.toString());
     ecPair.privateKey = bytes.toString(CryptoJS.enc.Utf8);
