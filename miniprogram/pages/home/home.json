@@ -1,5 +1,7 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "van-nav-bar": "/component/vant-weapp/nav-bar/index"
+  },
   "navigationStyle": "custom",
   "navigationBarTextStyle": "black"
 }

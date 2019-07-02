@@ -2,16 +2,12 @@ const app = getApp();
 
 Page({
   data: {
-    publicKey: "",
-    statusBarHeight: 0,
-    navHeight: 0
+    publicKey: ""
   },
 
   onReady: function() {
     this.setData({
-      publicKey: app.globalData.publicKey,
-      statusBarHeight: app.globalData.statusBarHeight,
-      navHeight: app.globalData.navHeight
+      publicKey: app.globalData.publicKey
     });
   }
 });

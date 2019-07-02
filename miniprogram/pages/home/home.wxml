@@ -1,9 +1,7 @@
 <view class="content">
-    <view style="height:{{statusBarHeight}}px" />
-    <view class="title_bar" style="height:{{navHeight}}px">
-        <image class="icon_setting title_icon_width" src="../../images/icon_more.png" mode="aspectFit" />
-        <text class="title_text">Orange Wallet</text>
-        <view class="title_icon_width" style="background-color:#000000" />
-    </view>
+    <van-nav-bar bind:click-left="onClickLeft" border="{{false}}">
+        <image slot="left" class="icon_setting" src="../../images/icon_more.png" mode="aspectFit" />
+        <text slot='title' class="title_text">Orange</text>
+    </van-nav-bar>
     <text>{{publicKey}}</text>
 </view>
