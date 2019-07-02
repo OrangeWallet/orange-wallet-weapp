@@ -4,7 +4,7 @@ var __DEFINE__ = function(modId, func, req) { var m = { exports: {} }; __MODS__[
 var __REQUIRE__ = function(modId, source) { if(!__MODS__[modId]) return require(source); if(!__MODS__[modId].status) { var m = { exports: {} }; __MODS__[modId].status = 1; __MODS__[modId].func(__MODS__[modId].req, m, m.exports); if(typeof m.exports === "object") { Object.keys(m.exports).forEach(function(k) { __MODS__[modId].m.exports[k] = m.exports[k]; }); if(m.exports.__esModule) Object.defineProperty(__MODS__[modId].m.exports, "__esModule", { value: true }); } else { __MODS__[modId].m.exports = m.exports; } } return __MODS__[modId].m.exports; };
 var __REQUIRE_WILDCARD__ = function(obj) { if(obj && obj.__esModule) { return obj; } else { var newObj = {}; if(obj != null) { for(var k in obj) { if (Object.prototype.hasOwnProperty.call(obj, k)) newObj[k] = obj[k]; } } newObj.default = obj; return newObj; } };
 var __REQUIRE_DEFAULT__ = function(obj) { return obj && obj.__esModule ? obj.default : obj; };
-__DEFINE__(1562055042367, function(require, module, exports) {
+__DEFINE__(1562055042274, function(require, module, exports) {
 
 
 var elliptic = exports;
@@ -19,11 +19,11 @@ elliptic.curves = require('./elliptic/curves');
 elliptic.ec = require('./elliptic/ec');
 elliptic.eddsa = require('./elliptic/eddsa');
 
-}, function(modId) {var map = {"../package.json":1562055042368,"./elliptic/utils":1562055042369,"./elliptic/curve":1562055042370,"./elliptic/curves":1562055042375,"./elliptic/ec":1562055042377,"./elliptic/eddsa":1562055042380}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1562055042368, function(require, module, exports) {
+}, function(modId) {var map = {"../package.json":1562055042275,"./elliptic/utils":1562055042276,"./elliptic/curve":1562055042277,"./elliptic/curves":1562055042282,"./elliptic/ec":1562055042284,"./elliptic/eddsa":1562055042287}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1562055042275, function(require, module, exports) {
 module.exports = {
   "name": "elliptic",
-  "version": "6.5.0",
+  "version": "6.4.1",
   "description": "EC cryptography",
   "main": "lib/elliptic.js",
   "files": [
@@ -81,7 +81,7 @@ module.exports = {
 }
 
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1562055042369, function(require, module, exports) {
+__DEFINE__(1562055042276, function(require, module, exports) {
 
 
 var utils = exports;
@@ -204,7 +204,7 @@ utils.intFromLE = intFromLE;
 
 
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1562055042370, function(require, module, exports) {
+__DEFINE__(1562055042277, function(require, module, exports) {
 
 
 var curve = exports;
@@ -214,12 +214,13 @@ curve.short = require('./short');
 curve.mont = require('./mont');
 curve.edwards = require('./edwards');
 
-}, function(modId) { var map = {"./base":1562055042371,"./short":1562055042372,"./mont":1562055042373,"./edwards":1562055042374}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1562055042371, function(require, module, exports) {
+}, function(modId) { var map = {"./base":1562055042278,"./short":1562055042279,"./mont":1562055042280,"./edwards":1562055042281}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1562055042278, function(require, module, exports) {
 
 
 var BN = require('bn.js');
-var utils = require('../utils');
+var elliptic = require('../../elliptic');
+var utils = elliptic.utils;
 var getNAF = utils.getNAF;
 var getJSF = utils.getJSF;
 var assert = utils.assert;
@@ -591,16 +592,17 @@ BasePoint.prototype.dblp = function dblp(k) {
   return r;
 };
 
-}, function(modId) { var map = {"../utils":1562055042369}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1562055042372, function(require, module, exports) {
+}, function(modId) { var map = {"../../elliptic":1562055042274}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1562055042279, function(require, module, exports) {
 
 
-var utils = require('../utils');
+var curve = require('../curve');
+var elliptic = require('../../elliptic');
 var BN = require('bn.js');
 var inherits = require('inherits');
-var Base = require('./base');
+var Base = curve.base;
 
-var assert = utils.assert;
+var assert = elliptic.utils.assert;
 
 function ShortCurve(conf) {
   Base.call(this, 'short', conf);
@@ -1530,15 +1532,17 @@ JPoint.prototype.isInfinity = function isInfinity() {
   return this.z.cmpn(0) === 0;
 };
 
-}, function(modId) { var map = {"../utils":1562055042369,"./base":1562055042371}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1562055042373, function(require, module, exports) {
+}, function(modId) { var map = {"../curve":1562055042277,"../../elliptic":1562055042274}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1562055042280, function(require, module, exports) {
 
 
+var curve = require('../curve');
 var BN = require('bn.js');
 var inherits = require('inherits');
-var Base = require('./base');
+var Base = curve.base;
 
-var utils = require('../utils');
+var elliptic = require('../../elliptic');
+var utils = elliptic.utils;
 
 function MontCurve(conf) {
   Base.call(this, 'mont', conf);
@@ -1711,16 +1715,17 @@ Point.prototype.getX = function getX() {
   return this.x.fromRed();
 };
 
-}, function(modId) { var map = {"./base":1562055042371,"../utils":1562055042369}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1562055042374, function(require, module, exports) {
+}, function(modId) { var map = {"../curve":1562055042277,"../../elliptic":1562055042274}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1562055042281, function(require, module, exports) {
 
 
-var utils = require('../utils');
+var curve = require('../curve');
+var elliptic = require('../../elliptic');
 var BN = require('bn.js');
 var inherits = require('inherits');
-var Base = require('./base');
+var Base = curve.base;
 
-var assert = utils.assert;
+var assert = elliptic.utils.assert;
 
 function EdwardsCurve(conf) {
   // NOTE: Important as we are creating point in Base.call()
@@ -2146,25 +2151,24 @@ Point.prototype.eqXToP = function eqXToP(x) {
 Point.prototype.toP = Point.prototype.normalize;
 Point.prototype.mixedAdd = Point.prototype.add;
 
-}, function(modId) { var map = {"../utils":1562055042369,"./base":1562055042371}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1562055042375, function(require, module, exports) {
+}, function(modId) { var map = {"../curve":1562055042277,"../../elliptic":1562055042274}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1562055042282, function(require, module, exports) {
 
 
 var curves = exports;
 
 var hash = require('hash.js');
-var curve = require('./curve');
-var utils = require('./utils');
+var elliptic = require('../elliptic');
 
-var assert = utils.assert;
+var assert = elliptic.utils.assert;
 
 function PresetCurve(options) {
   if (options.type === 'short')
-    this.curve = new curve.short(options);
+    this.curve = new elliptic.curve.short(options);
   else if (options.type === 'edwards')
-    this.curve = new curve.edwards(options);
+    this.curve = new elliptic.curve.edwards(options);
   else
-    this.curve = new curve.mont(options);
+    this.curve = new elliptic.curve.mont(options);
   this.g = this.curve.g;
   this.n = this.curve.n;
   this.hash = options.hash;
@@ -2355,8 +2359,8 @@ defineCurve('secp256k1', {
   ]
 });
 
-}, function(modId) { var map = {"./curve":1562055042370,"./utils":1562055042369,"./precomputed/secp256k1":1562055042376}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1562055042376, function(require, module, exports) {
+}, function(modId) { var map = {"../elliptic":1562055042274,"./precomputed/secp256k1":1562055042283}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1562055042283, function(require, module, exports) {
 module.exports = {
   doubles: {
     step: 4,
@@ -3139,14 +3143,13 @@ module.exports = {
 };
 
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1562055042377, function(require, module, exports) {
+__DEFINE__(1562055042284, function(require, module, exports) {
 
 
 var BN = require('bn.js');
 var HmacDRBG = require('hmac-drbg');
-var utils = require('../utils');
-var curves = require('../curves');
-var rand = require('brorand');
+var elliptic = require('../../elliptic');
+var utils = elliptic.utils;
 var assert = utils.assert;
 
 var KeyPair = require('./key');
@@ -3158,13 +3161,13 @@ function EC(options) {
 
   // Shortcut `elliptic.ec(curve-name)`
   if (typeof options === 'string') {
-    assert(curves.hasOwnProperty(options), 'Unknown curve ' + options);
+    assert(elliptic.curves.hasOwnProperty(options), 'Unknown curve ' + options);
 
-    options = curves[options];
+    options = elliptic.curves[options];
   }
 
   // Shortcut for `elliptic.ec(elliptic.curves.curveName)`
-  if (options instanceof curves.PresetCurve)
+  if (options instanceof elliptic.curves.PresetCurve)
     options = { curve: options };
 
   this.curve = options.curve.curve;
@@ -3202,7 +3205,7 @@ EC.prototype.genKeyPair = function genKeyPair(options) {
     hash: this.hash,
     pers: options.pers,
     persEnc: options.persEnc || 'utf8',
-    entropy: options.entropy || rand(this.hash.hmacStrength),
+    entropy: options.entropy || elliptic.rand(this.hash.hmacStrength),
     entropyEnc: options.entropy && options.entropyEnc || 'utf8',
     nonce: this.n.toArray()
   });
@@ -3382,12 +3385,13 @@ EC.prototype.getKeyRecoveryParam = function(e, signature, Q, enc) {
   throw new Error('Unable to find valid recovery factor');
 };
 
-}, function(modId) { var map = {"../utils":1562055042369,"../curves":1562055042375,"./key":1562055042378,"./signature":1562055042379}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1562055042378, function(require, module, exports) {
+}, function(modId) { var map = {"../../elliptic":1562055042274,"./key":1562055042285,"./signature":1562055042286}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1562055042285, function(require, module, exports) {
 
 
 var BN = require('bn.js');
-var utils = require('../utils');
+var elliptic = require('../../elliptic');
+var utils = elliptic.utils;
 var assert = utils.assert;
 
 function KeyPair(ec, options) {
@@ -3503,13 +3507,14 @@ KeyPair.prototype.inspect = function inspect() {
          ' pub: ' + (this.pub && this.pub.inspect()) + ' >';
 };
 
-}, function(modId) { var map = {"../utils":1562055042369}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1562055042379, function(require, module, exports) {
+}, function(modId) { var map = {"../../elliptic":1562055042274}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1562055042286, function(require, module, exports) {
 
 
 var BN = require('bn.js');
 
-var utils = require('../utils');
+var elliptic = require('../../elliptic');
+var utils = elliptic.utils;
 var assert = utils.assert;
 
 function Signature(options, enc) {
@@ -3640,13 +3645,13 @@ Signature.prototype.toDER = function toDER(enc) {
   return utils.encode(res, enc);
 };
 
-}, function(modId) { var map = {"../utils":1562055042369}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1562055042380, function(require, module, exports) {
+}, function(modId) { var map = {"../../elliptic":1562055042274}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1562055042287, function(require, module, exports) {
 
 
 var hash = require('hash.js');
-var curves = require('../curves');
-var utils = require('../utils');
+var elliptic = require('../../elliptic');
+var utils = elliptic.utils;
 var assert = utils.assert;
 var parseBytes = utils.parseBytes;
 var KeyPair = require('./key');
@@ -3658,7 +3663,7 @@ function EDDSA(curve) {
   if (!(this instanceof EDDSA))
     return new EDDSA(curve);
 
-  var curve = curves[curve].curve;
+  var curve = elliptic.curves[curve].curve;
   this.curve = curve;
   this.g = curve.g;
   this.g.precompute(curve.n.bitLength() + 1);
@@ -3761,11 +3766,12 @@ EDDSA.prototype.isPoint = function isPoint(val) {
   return val instanceof this.pointClass;
 };
 
-}, function(modId) { var map = {"../curves":1562055042375,"../utils":1562055042369,"./key":1562055042381,"./signature":1562055042382}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1562055042381, function(require, module, exports) {
+}, function(modId) { var map = {"../../elliptic":1562055042274,"./key":1562055042288,"./signature":1562055042289}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1562055042288, function(require, module, exports) {
 
 
-var utils = require('../utils');
+var elliptic = require('../../elliptic');
+var utils = elliptic.utils;
 var assert = utils.assert;
 var parseBytes = utils.parseBytes;
 var cachedProperty = utils.cachedProperty;
@@ -3859,12 +3865,13 @@ KeyPair.prototype.getPublic = function getPublic(enc) {
 
 module.exports = KeyPair;
 
-}, function(modId) { var map = {"../utils":1562055042369}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1562055042382, function(require, module, exports) {
+}, function(modId) { var map = {"../../elliptic":1562055042274}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1562055042289, function(require, module, exports) {
 
 
 var BN = require('bn.js');
-var utils = require('../utils');
+var elliptic = require('../../elliptic');
+var utils = elliptic.utils;
 var assert = utils.assert;
 var cachedProperty = utils.cachedProperty;
 var parseBytes = utils.parseBytes;
@@ -3927,7 +3934,7 @@ Signature.prototype.toHex = function toHex() {
 
 module.exports = Signature;
 
-}, function(modId) { var map = {"../utils":1562055042369}; return __REQUIRE__(map[modId], modId); })
-return __REQUIRE__(1562055042367);
+}, function(modId) { var map = {"../../elliptic":1562055042274}; return __REQUIRE__(map[modId], modId); })
+return __REQUIRE__(1562055042274);
 })()
 //# sourceMappingURL=index.js.map

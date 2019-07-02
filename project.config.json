@@ -11,10 +11,11 @@
 		"newFeature": true,
 		"nodeModules": true,
 		"autoAudits": false,
-		"checkInvalidKey": true
+		"checkInvalidKey": true,
+		"uglifyFileName": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.7.2",
+	"libVersion": "2.7.3",
 	"appid": "wx3e2234d1c2be0808",
 	"projectname": "orange-wallet-weapp",
 	"cloudfunctionRoot": "cloudfunctions/",
