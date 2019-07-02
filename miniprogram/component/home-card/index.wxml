@@ -1,0 +1,19 @@
+<view class="card_content">
+    <view class="card_first_column">
+        <view class="sync_content">
+            <image class="sync_img" animation="{{syncAnimation}}" src="../../images/loading.png" />
+            <text class="sync_text">{{syncText}}</text>
+        </view>
+        <view class="balance_content">
+            <text class="balance_text">{{balance}}</text>
+            <text class="unit_text">{{ckbUnit}}</text>
+        </view>
+        <van-button custom-class="backup_btn" size="mini" plain round bind:click="onBackup">
+            <text class="backup_text">备份</text>
+        </van-button>
+    </view>
+    <view class="card_second_column">
+        <text class="nettype_text">{{netType}}</text>
+        <image class="nervos_logo_img" src="../../images/nervos.svg" />
+    </view>
+</view>

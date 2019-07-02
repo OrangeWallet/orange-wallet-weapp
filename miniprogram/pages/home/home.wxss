@@ -16,3 +16,7 @@
   font-size: 50rpx;
   font-weight: bold;
 }
+
+home-card {
+  align-self: center;
+}

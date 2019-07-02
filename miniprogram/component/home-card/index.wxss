@@ -1,0 +1,79 @@
+.card_content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 90vw;
+  height: 22vh;
+  border-radius: 15rpx;
+  margin-top: 20rpx;
+  background: linear-gradient(to bottom right, #1976d2, #2196f3, #bbdefb);
+}
+
+.card_first_column {
+  display: flex;
+  flex-direction: column;
+}
+
+.card_second_column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.nettype_text {
+  color: white;
+  font-size: 40rpx;
+  margin-right: 40rpx;
+  margin-top: 30rpx;
+}
+
+.sync_content {
+  display: flex;
+  align-items: center;
+  margin-top: 10rpx;
+  margin-left: 10rpx;
+}
+
+.sync_text {
+  margin-left: 10rpx;
+  color: white;
+  font-size: 30rpx;
+}
+
+.sync_img {
+  height: 30rpx;
+  width: 30rpx;
+}
+
+.balance_content {
+  margin-top: 30rpx;
+}
+
+.balance_text {
+  font-size: 70rpx;
+  color: white;
+  font-weight: 700;
+  margin-left: 40rpx;
+}
+
+.unit_text {
+  font-size: 35rpx;
+  color: white;
+  margin-left: 12rpx;
+}
+
+.nervos_logo_img {
+  width: 130rpx;
+  height: 130rpx;
+  margin-bottom: 30rpx;
+}
+
+.backup_btn {
+  margin-left: 40rpx;
+  margin-top: 30rpx;
+}
+
+.backup_text {
+  color: #2196f3;
+  font-size: 30rpx;
+}

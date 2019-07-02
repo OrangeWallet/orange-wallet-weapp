@@ -1,7 +1,7 @@
 <view class="content">
-    <van-nav-bar bind:click-left="onClickLeft" border="{{false}}">
+    <van-nav-bar bind:click-left="onSetting" border="{{false}}">
         <image slot="left" class="icon_setting" src="../../images/icon_more.png" mode="aspectFit" />
         <text slot='title' class="title_text">Orange</text>
     </van-nav-bar>
-    <text>{{publicKey}}</text>
+    <home-card netType="{{netType}}" balance="{{balance}}" ckbUnit="{{ckbUnit}}" />
 </view>
