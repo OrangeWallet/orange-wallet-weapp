@@ -1,0 +1,11 @@
+<view class="bottom_btn_content">
+    <view class="receive_btn_content  botton_btn_content {{receiveTouched?'touched_btn':''}}" bind:tap="onReceive" bind:touchstart="receiveTouchStart" bind:touchend="receiveTouchEnd">
+        <image class="button_icon" src="../../images/receive.svg" />
+        <text class="button_text">收款</text>
+    </view>
+    <view class="botton_btn_line" />
+    <view class="send_btn_content  botton_btn_content {{sendTouched?'touched_btn':''}}" bind:tap="onSend" bind:touchstart="sendTouchStart" bind:touchend="sendTouchEnd">
+        <image class="button_icon" src="../../images/send.svg" />
+        <text class="button_text">转账</text>
+    </view>
+</view>

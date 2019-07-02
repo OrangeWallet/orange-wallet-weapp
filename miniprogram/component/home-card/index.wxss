@@ -6,7 +6,13 @@
   height: 22vh;
   border-radius: 15rpx;
   margin-top: 20rpx;
-  background: linear-gradient(to bottom right, #1976d2, #2196f3, #bbdefb);
+  background: linear-gradient(
+    to bottom right,
+    #1976d2,
+    #2196f3,
+    #90caf9,
+    #e3f2fd
+  );
 }
 
 .card_first_column {

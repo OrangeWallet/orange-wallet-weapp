@@ -4,4 +4,7 @@
         <text slot='title' class="title_text">Orange</text>
     </van-nav-bar>
     <home-card netType="{{netType}}" balance="{{balance}}" ckbUnit="{{ckbUnit}}" />
+    <text class="transaction_title_text">交易记录</text>
+    <view class="transactions_content"></view>
+    <home-bottom-button />
 </view>

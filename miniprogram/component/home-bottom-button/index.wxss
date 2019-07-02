@@ -1,0 +1,46 @@
+.bottom_btn_content {
+  height: 10vh;
+  margin-top: 20rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.botton_btn_content {
+  background-color: #2196f3;
+  height: 7vh;
+  width: 40vw;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.touched_btn {
+  background-color: #2176f3;
+}
+
+.receive_btn_content {
+  border-bottom-left-radius: 100rpx;
+  border-top-left-radius: 100rpx;
+}
+
+.send_btn_content {
+  border-bottom-right-radius: 100rpx;
+  border-top-right-radius: 100rpx;
+}
+
+.button_icon {
+  width: 70rpx;
+  height: 70rpx;
+}
+
+.button_text {
+  color: white;
+  font-size: 38rpx;
+}
+
+.botton_btn_line {
+  color: white;
+  width: 3rpx;
+  height: 7vh;
+}

@@ -1,12 +1,12 @@
 .content {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  height: 100vh;
 }
 
 .icon_setting {
-  height: 16px;
-  width: 16px;
+  height: 20px;
+  width: 20px;
   vertical-align: middle;
   display: inline-block;
 }
@@ -19,4 +19,19 @@
 
 home-card {
   align-self: center;
+}
+
+.transaction_title_text {
+  margin-left: 5vw;
+  font-size: 45rpx;
+  color: #2196f3;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.transactions_content {
+  flex: 1;
+  align-self: center;
+  background-color: azure;
+  width: 90vw;
 }
