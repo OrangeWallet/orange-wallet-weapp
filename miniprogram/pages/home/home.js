@@ -13,5 +13,8 @@ Page({
       publicKey: app.globalData.publicKey
     });
   },
-  onSetting: function() {}
+  onSetting: function() {
+    const RPCUtils = require("../../utils/rpcUtils");
+    RPCUtils.getTipBlockNumber();
+  }
 });
