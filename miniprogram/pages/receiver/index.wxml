@@ -1,0 +1,7 @@
+<view class="content">
+    <canvas canvas-id="myQrcode" />
+    <text class="title_text">Address:</text>
+    <text class="text" selectable="{{true}}">{{address}}</text>
+    <text class="title_text">blake160:</text>
+    <text class="text" selectable="{{true}}">{{blake160}}</text>
+</view>

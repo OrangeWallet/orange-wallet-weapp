@@ -1,8 +1,4 @@
 const app = getApp();
-var _animation;
-var _animationIndex = 0;
-var _animationIntervalId = -1;
-const _ANIMATION_TIME = 300;
 
 Page({
   data: {

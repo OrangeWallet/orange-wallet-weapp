@@ -23,7 +23,9 @@ Component({
     sendTouchEnd: function() {
       this.setData({ sendTouched: false });
     },
-    onReceive: function() {},
+    onReceive: function() {
+      wx.navigateTo({ url: "../receiver/index" });
+    },
     onSend: function() {
       this.triggerEvent("onSendCapacity");
     }

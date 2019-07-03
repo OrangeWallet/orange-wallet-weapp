@@ -1,0 +1,26 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+canvas {
+  width: 200px;
+  height: 200px;
+  margin-top: 40rpx;
+}
+
+text {
+  width: 80vw;
+  align-self: center;
+  word-wrap: break-word;
+}
+
+.title_text {
+  font-size: 45rpx;
+  margin-top: 15rpx;
+}
+
+.text {
+  margin-top: 5rpx;
+}
